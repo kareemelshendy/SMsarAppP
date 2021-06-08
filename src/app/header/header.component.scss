@@ -1,0 +1,16 @@
+.navbar {
+    font-size: 2rem;
+    text-align: center;
+    .logo {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-left: 1rem;
+    }
+    &__box {
+        margin-left: auto;
+        margin-right: 3rem;
+    }
+    &__item {
+        margin-left: 2rem;
+    }
+}

@@ -1,0 +1,68 @@
+.main {
+    // background-color: #adbacc;
+    color: #08545c;
+    // font-size: 1.7rem;
+}
+
+.sreachbox {
+    width: 100%;
+    input {
+        font-size: 1.7rem;
+        text-align: right;
+        direction: rtl;
+        margin: 0 auto;
+        width: 40%;
+    }
+    &__text {
+        width: 100%;
+        background-color: darkblue;
+    }
+}
+
+.conta {
+    @media (max-width: 730px) {
+        overflow-x: scroll;
+    }
+    .table {
+        font-size: 1.5rem;
+        text-align: right;
+        tbody {
+            height: 300px;
+            .spinner {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                background-color: red;
+                &__loading {
+                    position: absolute;
+                    top: 100%;
+                    left: 0%;
+                    transform: translate(-50%, -50%);
+                }
+            }
+        }
+    }
+}
+
+.clearfix {
+    font-size: 1.6rem;
+}
+
+.paginationbar {
+    width: 100%;
+    font-size: 1.5rem;
+    position: relative;
+    // background-color: red;
+    margin-bottom: 5rem;
+    &__ul {
+        position: absolute;
+        // top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        margin: 0 auto;
+        .disabled {
+            pointer-events: none; //This makes it not clickable
+            opacity: 0.6; //This grays it out to look disabled
+        }
+    }
+}

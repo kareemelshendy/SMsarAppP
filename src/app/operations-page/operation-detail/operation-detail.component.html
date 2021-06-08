@@ -1,0 +1,73 @@
+<h1 class="u-center-text u-margin-bottom-small">بحث</h1>
+<div class="row sreachbox u-margin-bottom-medium">
+    <div class="col-md-4">
+        <input type="text" placeholder="قيمة الحصة" class="form-control u-margin-bottom-small">
+        <input type="text" placeholder="رقم التليفون" class="form-control u-margin-bottom-small">
+    </div>
+    <div class="col-md-4">
+        <input type="text" placeholder="رقم التأمين" class="form-control u-margin-bottom-small">
+        <input type="text" placeholder="الرقم القومي " class="form-control u-margin-bottom-small" [(ngModel)]="searchValue" (keyup.enter)=onSearch(searchValue)>
+    </div>
+    <div class="col-md-4">
+        <input type="text" placeholder="أسم العميل" class="form-control u-margin-bottom-small">
+        <input type="text" placeholder="سجل العميل" class="form-control u-margin-bottom-small">
+    </div>
+</div>
+
+<!-- Table -->
+<div class="conta">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered table-striped " style="direction: rtl;">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">أسم العميل</th>
+                        <th scope="col">الرقم القومي</th>
+                        <th scope="col">مبلغ الشراء</th>
+                        <th scope="col">مبلغ البيع</th>
+                        <th scope="col">اسم التاجر</th>
+                        <td scope="col">تاريخ البيع</td>
+                        <th scope="col">دخول</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let transaction of transactions ; let i = index" (click)="onShow(i)" style="cursor: pointer; ">
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{transaction.client.name}}</td>
+                        <td>{{transaction.client.nationalId}}</td>
+                        <td>{{transaction.purchaseCash}}</td>
+                        <td>{{transaction.sellCash}}</td>
+                        <td>{{transaction.dealerName}}</td>
+                        <td>{{transaction.sellDate}}</td>
+                        <td>
+                            <button class="btn btn-danger admin__table--btn " (click)="onDelete(i) ">
+                                        <i class="fa fa-trash-o " aria-hidden="true "></i>
+                                    Delete
+                                    </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="paginationbar">
+                <ul *ngIf="pager.pages && pager.pages.length" class="pagination paginationbar__ul">
+                    <li class="page-item first-item" [class.disabled]="pager.currentPage === '1'">
+                        <a class="page-link" (click)="onNavigate(1)">First</a>
+                    </li>
+                    <li class="page-item previous-item" [class.disabled]="pager.currentPage === '1'">
+                        <a class="page-link" (click)="onNavigate(pager.currentPage -'1')">Previous</a>
+                    </li>
+                    <li *ngFor="let page of pager.pages" class="page-item number-item">
+                        <a class="page-link" (click)="onNavigate(page)">{{page}}</a>
+                    </li>
+                    <li class="page-item next-item" [class.disabled]="+pager.currentPage === pager.totalPages">
+                        <a class="page-link" (click)="onNavigate(+pager.currentPage +1)">Next</a>
+                    </li>
+                    <li class="page-item last-item" [class.disabled]="+pager.currentPage === pager.totalPages">
+                        <a class="page-link" (click)="onNavigate(pager.totalPages)">Last</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

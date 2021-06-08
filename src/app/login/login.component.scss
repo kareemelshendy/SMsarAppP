@@ -1,0 +1,99 @@
+.spinner {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    &__loading {
+        position: absolute;
+        top: 43%;
+        left: 43%;
+        transform: translate(-30%, -30%);
+    }
+}
+
+.login {
+    height: 100vh;
+    background-color: #ffba33;
+    // background-color: darkcyan;
+    width: 100%;
+    display: flex;
+    &__right {
+        width: 50%;
+        position: relative;
+        @media (max-width: 900px) {
+            width: 100%;
+        }
+        &--active {
+            color: #19515a;
+            text-align: left;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+        hr {
+            box-shadow: 5px 8px 20px rgb(0, 0, 0, 0.7);
+        }
+        &--form {
+            position: absolute;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 0.7rem;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60%;
+            text-align: right;
+            font-size: 1.5rem;
+            font-weight: bolder;
+            box-shadow: 5px 5px 20px rgb(0, 0, 0, 0.5);
+        }
+        &--formimg {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        &--forminput {
+            margin-top: 2rem;
+            input {
+                font-size: 1.7rem;
+            }
+        }
+    }
+    &__btnstyle {
+        margin-top: 2rem;
+        display: flex;
+        justify-content: space-between;
+        &--login {}
+        &--btn {
+            font-size: 1.5rem;
+            // font-weight: bolder;
+            width: 20%;
+        }
+    }
+    &__left {
+        width: 50%;
+        @media (max-width: 900px) {
+            width: 0;
+        }
+        // background-image: url("../../assets/img/marvin-meyer-SYTO3xs06fU-unsplash.jpg");
+        // background-size: cover;
+        position: relative;
+        clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
+        &--photo {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        &--overlay {
+            width: 100%;
+            height: 100%;
+            background-color: #19515a;
+        }
+        &--logo {
+            color: white;
+            position: absolute;
+            top: 3rem;
+            left: 3rem;
+        }
+        &--footer {}
+    }
+}

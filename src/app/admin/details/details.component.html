@@ -1,0 +1,60 @@
+<app-edit *ngIf="isEdit" (isEdit)="onFinsh()"></app-edit>
+<div class="container-fluid admin">
+    <div class="row">
+        <h1 class="u-margin-bottom-medium u-margin-left-medium u-margin-top-small">Admin Page</h1>
+        <div class="col-md-9">
+            <table class="table table-hover  admin__table">
+                <thead>
+                    <tr class="yellow">
+                        <th scope="">#</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Password</th>
+                        <th scope="col">Status</th>
+                        <th></th>
+                        <th></th>
+
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let user of users; let i = index" (click)="onUpdate(i)">
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{user.name}}</td>
+                        <td>{{user.password}}</td>
+                        <td>{{user.role}}</td>
+                        <td>
+                            <button class="btn btn-primary admin__table--btn " (click)="onUpdate(i)">
+                                <i class="fa fa-cog " aria-hidden="true "></i>
+                           edit
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger admin__table--btn " (click)="onDelete(i)">
+                                    <i class="fa fa-trash-o " aria-hidden="true "></i>
+                                Delete
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+        <!-- <div class="col-md-3 card  admin__control">
+            <h3 class="card-header">Users</h3>
+
+        </div> -->
+        <aside class="col-md-3">
+            <div class="card admin__control">
+                <div class="card-header admin__control-header">
+                    Users
+                </div>
+                <div class="card-body admin__control-body">
+                    <button class="btn btn-warning " (click)="onAddUser()">
+                        <i class="fa fa-user-plus"></i> Add user
+                    </button>
+                    <hr>
+                </div>
+            </div>
+        </aside>
+    </div>
+</div>

@@ -1,0 +1,81 @@
+#notfound {
+    position: relative;
+    height: 90vh;
+    .notfound {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 520px;
+        width: 100%;
+        line-height: 1.4;
+        text-align: center;
+        .notfound-404 {
+            position: relative;
+            height: 200px;
+            margin: 0px auto 20px;
+            z-index: -1;
+            @media only screen and (max-width: 480px) {
+                height: 148px;
+                margin: 0px auto 10px;
+            }
+            h1 {
+                // font-family: "Montserrat", sans-serif;
+                font-size: 236px;
+                font-weight: 200;
+                margin: 0px 0px 20px 0;
+                color: #211b19;
+                text-transform: uppercase;
+                position: absolute;
+                left: 50%;
+                top: 30%;
+                transform: translate(-50%, -50%);
+                @media only screen and (max-width: 767px) {
+                    font-size: 148px;
+                }
+                @media only screen and (max-width: 480px) {
+                    font-size: 86px;
+                }
+            }
+            h2 {
+                // font-family: "Montserrat", sans-serif;
+                font-size: 28px;
+                font-weight: 400;
+                text-transform: uppercase;
+                color: #211b19;
+                background: #fff;
+                padding: 5px 5px;
+                margin: 10px auto 0 auto;
+                display: inline-block;
+                position: absolute;
+                bottom: -8px;
+                left: 0;
+                right: 0;
+                @media only screen and (max-width: 480px) {
+                    font-size: 16px;
+                }
+            }
+        }
+        a {
+            // font-family: 'Montserrat', sans-serif;
+            display: inline-block;
+            font-weight: 700;
+            text-decoration: none;
+            color: #211b19;
+            text-transform: uppercase;
+            padding: 13px 23px;
+            background: #ffc107;
+            font-size: 18px;
+            -webkit-transition: 0.2s all;
+            transition: 0.2s all;
+            @media only screen and (max-width: 480px) {
+                padding: 7px 15px;
+                font-size: 14px;
+            }
+        }
+        a:hover {
+            color: #ffc107;
+            background: #211b19;
+        }
+    }
+}

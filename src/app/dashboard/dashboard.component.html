@@ -1,0 +1,65 @@
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-md-12 u-margin-top-small u-margin-bottom-medium">
+            <h2 class="form__title u-margin-bottom-medium ">لوحة التحكم</h2>
+            <div class="spinner" *ngIf="isloading">
+                <app-loading-spinner class="spinner__loading"></app-loading-spinner>
+            </div>
+            <form class="form" [formGroup]="dbform" *ngIf="dbform">
+                <div class="form__right">
+                    <div class="form-group ">
+                        <label for="clients">عدد العملاء</label>
+                        <input type="number" id="" formControlName="clients" class="form-control" readonly>
+                    </div>
+                    <div class="form-group ">
+                        <label for="totalIncome">إجمالي الدخل</label>
+                        <input type="number" id="" formControlName="totalIncome" class="form-control" readonly>
+                    </div>
+                    <!-- <div class="form-group ">
+                        <label for="certificatesAvailable">عدد الشهادات المتاحة</label>
+                        <input type="number" name="certificatesAvailable" id="" class="form-control" readonly>
+                    </div> -->
+                    <!-- <div class="form-group ">
+                        <label for="numberOfSales">عدد عمليات البيع</label>
+                        <input type="number" name="numberOfSales" id="" class="form-control" readonly>
+                    </div> -->
+                    <div class="form-group ">
+                        <label for="transactions">عدد العمليات</label>
+                        <input type="number" formControlName="transactions" id="" class="form-control" readonly>
+                    </div>
+                    <div class="form-group ">
+                        <label for="profit">الأرباح</label>
+                        <input type="number" formControlName="profit" id="" class="form-control" readonly>
+                    </div>
+                </div>
+
+                <div class="form__left">
+                    <div class="form-group ">
+                        <label for="dealers">عدد التجار</label>
+                        <input type="number" formControlName="dealers" id="" class="form-control" readonly>
+                    </div>
+                    <div class="form-group ">
+                        <label for="totlaOutcome">إجمالي المدفوع</label>
+                        <input type="number" formControlName="totlaOutcome" id="" class="form-control" readonly>
+                    </div>
+
+                    <!-- <div class="form-group ">
+                        <label for="expenses">مصاريف نثرية</label>
+                        <input type="number" name="expenses" id="" class="form-control" readonly>
+                    </div> -->
+
+
+
+
+                    <div class="form-group ">
+                        <label for="qoutaNumber">إجمالي الحصص الإستراية</label>
+                        <input type="number" formControlName="qoutaNumber" id="" class="form-control" readonly>
+                    </div>
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+</div>

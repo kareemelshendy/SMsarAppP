@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-warning" *ngIf='isAuthenticated'>
+
+    <a class="navbar-brand logo" routerLink="/">Active Group</a>
+    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+  </button>
+    <div class="navbar-navout navbar-collapse collapse" id="navbarText">
+        <ul class="navbar-nav navbar__box">
+            <li class="nav-item navbar__item" routerLinkActive="active">
+                <a class="nav-link" routerLink="/dashboard">إجمالي</a>
+            </li>
+            <li class="nav-item navbar__item" routerLinkActive="active">
+                <a class="nav-link" routerLink="/operations">العمليات المالية</a>
+            </li>
+            <li class="nav-item navbar__item" routerLinkActive="active">
+                <a class="nav-link" routerLink="/home">الرئيسية</a>
+            </li>
+
+            <li class="nav-item navbar__item">
+                <a class="nav-link" (click)="onLogout()" style="cursor: pointer;">خروج</a>
+            </li>
+        </ul>
+    </div>
+</nav>

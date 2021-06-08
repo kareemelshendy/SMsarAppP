@@ -1,0 +1,67 @@
+/* You can add global styles to this file, and also import other style files */
+
+// @import '~ngx-toastr/toastr';
+@import "./assets/css/bootstrap.min.css";
+@import "~font-awesome/css/font-awesome.css";
+@import './assets/css/fontawesome.min.css';
+@import './assets/sass/utilities';
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+@font-face {
+    font-family: "cocon";
+    src: url("./assets/fonts/Cocon-Next-Arabic-Light.otf");
+    font-style: normal;
+    font-weight: normal;
+}
+
+body {
+    font-family: "cocon", sans-serif !important;
+    box-sizing: border-box;
+    color: #08545c;
+    // overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+    width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: #eeeeeeba;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #89a4c5;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}

@@ -1,0 +1,54 @@
+.edit {
+    font-size: 1.8rem;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    // z-index: 10000000;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 50;
+    &__box {
+        position: fixed;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 60vw;
+        padding: 5rem;
+        z-index: 100;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    }
+    &__form {
+        // width: 80%;
+        input {
+            font-size: inherit;
+        }
+        padding-top: .5rem;
+    }
+    &__radio {
+        width: 20%;
+        font-size: 1.6rem;
+        margin-top: 2rem;
+        input[type="radio"] {
+            margin-left: 1rem;
+        }
+        &-select {
+            font-size: 1.3rem;
+        }
+    }
+    &__btn {
+        font: inherit;
+        width: 20rem !important;
+        float: right;
+        font-weight: bold;
+    }
+    &__close {
+        position: absolute;
+        font-size: 2rem;
+        top: 1.5rem;
+        right: 3rem;
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,80 @@
+<h1 class="u-center-text u-margin-bottom-small">
+    بحث</h1>
+<div class="row sreachbox u-margin-bottom-medium">
+
+    <input type="text" class="form-control" [(ngModel)]="searchValue" placeholder="إبحث هنا ....." (keyup.enter)=onSearch(searchValue)>
+
+
+    <!-- <div class="col-md-4">
+            <input type="text" placeholder="أسم العميل" class="form-control u-margin-bottom-small" [(ngModel)]="username" (ngModelChange)="search()">
+            <input type="text" placeholder="رقم التليفون" class="form-control u-margin-bottom-small">
+        </div> -->
+    <!-- <div class="col-md-4">
+            <input type="text" placeholder="رقم التأمين" class="form-control u-margin-bottom-small">
+            <input type="text" placeholder="الرقم القومي " class="form-control u-margin-bottom-small">
+        </div>
+        <div class="col-md-4">
+            <input type="text" placeholder="أسم العميل" class="form-control u-margin-bottom-small">
+            <input type="text" placeholder="سجل العميل" class="form-control u-margin-bottom-small">
+        </div> -->
+</div>
+<div class="row  conta">
+    <div class="col-md-12">
+        <table class="table table-bordered table-striped " style="direction: rtl;">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">أسم العميل</th>
+                    <th scope="col">الرقم القومي</th>
+                    <th scope="col">رقم تلفون العميل</th>
+                    <th scope="col">قيمة الحصة الإسترادية</th>
+                    <th scope="col">رقم التأمين</th>
+                    <th scope="col">دخول</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- <div class="spinner" *ngIf="true">
+                    <app-loading-spinner class="spinner__loading"></app-loading-spinner>
+                </div> -->
+                <!-- <tr *ngFor="let client of clients | filter:searchValue ; let i=index " (click)="onShow(i)" style="cursor: pointer; "> -->
+                <tr *ngFor="let client of clients; let i=index " (click)="onShow(i)" style="cursor: pointer; ">
+
+                    <td scope="row">{{i+1}}</td>
+                    <td>{{client.name}}</td>
+                    <td>{{client.nationalId}}</td>
+                    <td>{{client.phoneNumber}}</td>
+                    <td>{{client.quotaValue}}</td>
+                    <td>{{client.insuranceNumber}}</td>
+                    <td>
+                        <button class="btn btn-danger admin__table--btn " (click)="onDelete(i)">
+                                <i class="fa fa-trash-o " aria-hidden="true "></i>
+                            Delete
+                            </button>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="paginationbar">
+            <ul *ngIf="pager.pages && pager.pages.length" class="pagination paginationbar__ul">
+                <li class="page-item first-item" [class.disabled]="pager.currentPage === '1'">
+                    <a class="page-link" (click)="onNavigate(1)">First</a>
+                </li>
+                <li class="page-item previous-item" [class.disabled]="pager.currentPage === '1'">
+                    <a class="page-link" (click)="onNavigate(pager.currentPage -'1')">Previous</a>
+                </li>
+                <li *ngFor="let page of pager.pages" class="page-item number-item">
+                    <a class="page-link" (click)="onNavigate(page)">{{page}}</a>
+                </li>
+                <li class="page-item next-item" [class.disabled]="+pager.currentPage === pager.totalPages">
+                    <a class="page-link" (click)="onNavigate(+pager.currentPage +1)">Next</a>
+                </li>
+                <li class="page-item last-item" [class.disabled]="+pager.currentPage === pager.totalPages">
+                    <a class="page-link" (click)="onNavigate(pager.totalPages)">Last</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>

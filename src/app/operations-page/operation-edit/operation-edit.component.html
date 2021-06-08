@@ -1,0 +1,212 @@
+<div class="spinner" *ngIf="isLoading">
+    <app-loading-spinner class="spinner__loading"></app-loading-spinner>
+</div>
+
+
+<div class="row">
+    <div class="col-md-12 form u-margin-top-small u-margin-bottom-medium">
+        <h2 class="form__title u-margin-bottom-medium ">العمليات المالية</h2>
+
+        <div class="alert alert-success alert-dismissible fade show alertBox u-margin-bottom-small" role="alert" *ngIf="alert">
+            تم رفع العمليه
+            <button (click)='closeAlert()' class="close" data-dismiss="alert" aria-label="Close">&times;</button>
+        </div>
+        <div class="alert alert-danger alert-dismissible fade show alertBox u-margin-bottom-small" role="alert" *ngIf="alertDanger">
+            {{errorMessage}}
+            <button (click)='closeAlertDanger()' class="close" data-dismiss="alert" aria-label="Close">&times;</button>
+        </div>
+        <div class="form__clientInfo u-margin-bottom-medium">
+            <h2> الأسم : {{name}} </h2>
+            <h2> الرقم القومي : {{nationalId}} </h2>
+            <h2> قيمة الصحة : {{quotaValue}}</h2>
+        </div>
+
+        <form class="u-margin-bottom-medium" #operationForm="ngForm" (ngSubmit)="onSubmit(operationForm)">
+            <div class="form__all u-margin-bottom-medium">
+                <div class="form__left">
+                    <div class="form-group">
+                        <label for="sellCash">مبلغ البيع</label>
+                        <input type="number" name="sellCash" class="form-control" ngModel>
+                    </div>
+                    <div class="form-group">
+                        <label for="sellDate">تاريخ البيع</label>
+                        <input type="datetime-local" name="sellDate" class="form-control" ngModel>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="isExtracted" class="form__check">استخراج الشهاده</label>
+                        <input type="checkbox" name="isExtracted" id="isExtracted" ngModel>
+                    </div>
+                    <div class="form-group">
+                        <label for="paperSentToClient" class="form__check">استلام العميل للشهاده</label>
+                        <input type="checkbox" name="paperSentToClient" id="paperSentToClient" ngModel>
+                    </div>
+                    <div class="form-group">
+                        <label for="relasePaperDate">تاريخ استلام الشهاده</label>
+                        <input type="datetime-local" name="relasePaperDate" class="form-control" ngModel>
+                    </div>
+                    <div class="form-group">
+                        <label for="sentPaperDate">تاريخ  الارسال</label>
+                        <input type="datetime-local" name="sentPaperDate" class="form-control" ngModel>
+                    </div>
+                </div>
+
+                <div class="form__right">
+                    <div class="form-group">
+                        <label for="purchaseCash">مبلغ الشراء</label>
+                        <input type="number" name="purchaseCash" class="form-control" ngModel required>
+                    </div>
+                    <div class="form-group">
+                        <label for="purchaseDate">تاريخ الشراء</label>
+                        <input type="datetime-local" name="purchaseDate" class="form-control" ngModel required>
+                    </div>
+                    <!-- <div class="form-group">
+                        <label for="profit">الربح</label>
+                        <input type="number" name="profit" class="form-control" readonly ngModel>
+                    </div> -->
+                    <div class="form-group">
+                        <label for="dealerName">اسم التاجر المشتري</label>
+                        <input type="text" name="dealerName" class="form-control" ngModel>
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneNumber">رقم التليفون</label>
+                        <input type="text" name="phoneNumber" class="form-control" ngModel>
+                    </div>
+                    <div class="form-group ">
+                        <label for="productType">نوع البضاعه</label>
+                        <select name="productType" class="form-control form__select" ngModel required>
+                            <option value="closes" >Closes</option>
+                            <option vlaue="tech">Tech</option>
+                            <option value="cars">Cars</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group form__img--group">
+                        <label for="paper">صورة</label>
+                        <input type="file" name="paper" (change)="onSelect($event)" class='u-margin-bottom-small' ngModel>
+                        <br>
+                        <!-- <img [src]="paper" alt="" height="200" width="200"> -->
+                        <img [src]="paperUrl" alt="" height="200" width="200" *ngIf="paperUrl.length>0">
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="form__btn">
+                <button class="btn btn-warning" (click)="onPrint()">طباعة الشهاده</button>
+                <button class="btn btn-primary" type="submit" [disabled]="!operationForm.valid">{{showMode?'تعديل' : 'حفظ'}}</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+
+
+
+<!-- 
+<div class="row">
+    <div class="col-md-12 form u-margin-top-small u-margin-bottom-medium">
+        <h2 class="form__title u-margin-bottom-medium ">العمليات المالية</h2>
+
+        <div class="form__clientInfo">
+            <h2> الأسم : {{name}} </h2>
+            <h2> الرقم القومي : {{nationalId}} </h2>
+            <h2> قيمة الصحة : {{quotaValue}}</h2>
+        </div>
+
+        <form class="u-margin-bottom-medium" [formGroup]="transactionForm" (ngSubmit)="onSubmit()">
+            <div class="form__center u-margin-bottom-medium"> -->
+<!-- <div class="form-group form__center--group">
+                    <label for="name">اسم البائع</label>
+                    <input type="text" name="name" class="form-control" readonly ngModel>
+                </div>
+                <div class="form-group form__center--group">
+                    <label for="nationalId">الرقم القومي</label>
+                    <input type="text" name="nationalId" class="form-control" readonly ngModel>
+                </div> -->
+
+<!-- <div class="form-group form__center--group">
+                    <label for="quotaValue">قيمة الحصة</label>
+                    <input type="text" name="quotaValue" class="form-control" readonly ngModel>
+                </div> -->
+<!-- </div>
+            <div class="form__all u-margin-bottom-medium">
+
+                <div class="form__left">
+                    <div class="form-group">
+                        <label for="purchaseCash">مبلغ الشراء</label>
+                        <input type="number" formControlName="purchaseCash" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="purchaseDate">تاريخ الشراء</label>
+                        <input type="datetime-local" formControlName="purchaseDate" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="isExtracted" class="form__check">استخراج الشهاده</label>
+                        <input type="checkbox" formControlName="isExtracted" id="isExtracted">
+                    </div>
+                    <div class="form-group">
+                        <label for="paperSentToClient" class="form__check">استلام العميل للشهاده</label>
+                        <input type="checkbox" formControlName="paperSentToClient" id="paperSentToClient">
+                    </div>
+                    <div class="form-group">
+                        <label for="relasePaperDate">تاريخ استلام الشهاده</label>
+                        <input type="datetime-local" formControlName="relasePaperDate" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="sentPaperDate">تاريخ  الارسال</label>
+                        <input type="datetime-local" formControlName="sentPaperDate" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form__right">
+                    <div class="form-group">
+                        <label for="sellCash">مبلغ البيع</label>
+                        <input type="number" formControlName="sellCash" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="sellDate">تاريخ البيع</label>
+                        <input type="datetime-local" formControlName="sellDate" class="form-control">
+                    </div> -->
+<!-- <div class="form-group">
+                        <label for="profit">الربح</label>
+                        <input type="number" name="profit" class="form-control" readonly >
+                    </div> -->
+<!-- <div class="form-group">
+                        <label for="dealerName">اسم التاجر المشتري</label>
+                        <input type="text" formControlName="dealerName" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneNumber">رقم التليفون</label>
+                        <input type="text" formControlName="phoneNumber" class="form-control">
+                    </div>
+                    <div class="form-group ">
+                        <label for="productType">نوع البضاعه</label>
+                        <select formControlName="productType" class="form-control form__select">
+                            <option value="closes" >Closes</option>
+                            <option vlaue="tech">Tech</option>
+                            <option value="cars">Cars</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group form__img--group">
+                        <label for="paper">صورة</label>
+                        <input type="file" formControlName="paper" (change)="onSelect($event)" class='u-margin-bottom-small'>
+                        <br> -->
+<!-- <img [src]="paper" alt="" height="200" width="200"> -->
+<!-- </div>
+                </div>
+
+
+            </div>
+            <div class="form__btn">
+                <button class="btn btn-warning" (click)="onPrint()">طباعة الشهاده</button>
+                <button class="btn btn-primary" type="submit" [disabled]="!transactionForm.valid">{{showMode?'تعديل' : 'حفظ'}}</button>
+            </div>
+
+        </form>
+    </div>
+</div> -->
