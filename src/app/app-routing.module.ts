@@ -27,7 +27,7 @@ const appRoutes: Routes = [
     component: DashboardComponent,
     canActivate: [AuthGuard],
   },
-  { path: "login-page", component: LoginComponent, canActivate: [MainGuard] },
+  { path: "login", component: LoginComponent, canActivate: [MainGuard] },
   { path: "admin", component: AdminComponent },
   { path: "404", component: E404Component },
   {path: '**', redirectTo: '/404'}
