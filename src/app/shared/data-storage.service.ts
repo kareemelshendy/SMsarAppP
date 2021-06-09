@@ -132,7 +132,7 @@ export class DataStorageService {
       __token: string;
     } = JSON.parse(localStorage.getItem("userData"));
     let reqHeader= new HttpHeaders({
-      'Content-Type':'application/json',
+      
       'Authorization': `Bearer ${userData.__token}`
     })
     return reqHeader
