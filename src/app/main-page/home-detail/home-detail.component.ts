@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Component, Input, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Subscription } from "rxjs";
@@ -50,8 +50,18 @@ export class HomeDetailComponent implements OnInit {
     // if(!this.searchValue){
     //   this.searchValue=''
     // }
+    // Get Token For  Authorization
+    const userData: {
+      name: string;
+      role: string;
+      __token: string;
+    } = JSON.parse(localStorage.getItem("userData"));
+    let reqHeader= new HttpHeaders({
+      'Content-Type':'application/json',
+      'Authorization': `Bearer ${userData.__token}`
+    })
     this.__http
-      .get<any>(`https://clerk-new.herokuapp.com/client/?page=${page}&nationalId=${this.searchValue}`)
+      .get<any>(`https://clerk-new.herokuapp.com/client/?page=${page}&nationalId=${this.searchValue}`,{headers: reqHeader})
       .subscribe((x) => {
         this.clientServic.setClients(x);
         this.pager = x
