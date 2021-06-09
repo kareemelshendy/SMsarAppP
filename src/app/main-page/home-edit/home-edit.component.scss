@@ -23,11 +23,7 @@
 
 .form {
     font-size: 1.6rem;
-    padding: 2rem;
-    margin: 2rem;
-    border-bottom: 1px solid #3a5a81;
-    // color: rgb(126, 118, 118);
-    // border-radius: 10px;
+    overflow: hidden;
     input {
         font-size: inherit;
         text-align: right;
@@ -37,6 +33,7 @@
         text-align: center;
     }
     &__info {
+        width: 100%;
         display: flex;
         justify-content: space-between;
     }
