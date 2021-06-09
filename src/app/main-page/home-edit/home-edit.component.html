@@ -2,101 +2,106 @@
     <app-loading-spinner class="spinner__loading"></app-loading-spinner>
 </div>
 
-<h2 class="form__text u-margin-bottom-medium ">
-    بيانات العميل</h2>
+<div class="row">
+    <div class="col-md-12 form u-margin-top-small u-margin-bottom-medium">
 
-<div class="alert alert-success alert-dismissible fade show alertBox" role="alert" *ngIf="alert">
-    تم رفع العميل
-    <button (click)='closeAlert()' class="close" data-dismiss="alert" aria-label="Close">&times;</button>
+        <h2 class="form__text u-margin-bottom-medium ">
+            بيانات العميل</h2>
+
+        <div class="alert alert-success alert-dismissible fade show alertBox" role="alert" *ngIf="alert">
+            تم رفع العميل
+            <button (click)='closeAlert()' class="close" data-dismiss="alert" aria-label="Close">&times;</button>
+        </div>
+        <div class="alert alert-danger alert-dismissible fade show alertBox" role="alert" *ngIf="alertDanger">
+            {{errorMessage}}
+            <button (click)='closeAlertDanger()' class="close" data-dismiss="alert" aria-label="Close">&times;</button>
+        </div>
+        <form action="" class="form " #userform="ngForm" (ngSubmit)="onSubmit(userform)">
+
+            <div class=" form__info ">
+                <div class="form__left u-margin-bottom-medium ">
+                    <div class="form-group ">
+                        <label for="taxCardNumber ">رقم البطاقة الضريبية</label>
+                        <input type="text" name="taxCardNumber" class="form-control " ngModel required [readonly]="showMode">
+                    </div>
+                    <div class="form-group ">
+                        <label for="quotaValue">قيمة الحصه الإسترادية</label>
+                        <input type="text" name="quotaValue" class="form-control " ngModel required [readonly]="showMode">
+                    </div>
+                    <div class="form-group ">
+                        <label for="commericalRecord ">سجل العميل التجاري</label>
+                        <input type="text " name="commericalRecord" class="form-control " ngModel required [readonly]="showMode">
+                    </div>
+                    <div class="form-group ">
+                        <label for="addressOfCommericalRecord">عنوان السجل التجاري</label>
+                        <input type="text" name="addressOfCommericalRecord" class="form-control" ngModel [readonly]="showMode">
+                    </div>
+                    <div class="form-group ">
+                        <label for="insuranceNumber ">رقم التأمين</label>
+                        <input type="text " name="insuranceNumber" class="form-control " ngModel required [readonly]="showMode">
+                    </div>
+
+                    <!-- <div class="form-group ">
+                        <label for="productType">نوع البضاعه</label>
+                        <select name="productType" class="form-control form__select" ngModel required>
+                            <option value="closes">Closes</option>
+                            <option vlaue="tech">Tech</option>
+                            <option value="cars">Cars</option>
+                        </select>
+                    </div> -->
+
+                </div>
+                <div class="form__right u-margin-bottom-medium ">
+                    <div class="form-group ">
+                        <label for="name">إسم العميل</label>
+                        <input type="text" name="name" class="form-control " ngModel required [readonly]="showMode">
+                    </div>
+                    <div class="form-group ">
+                        <label for="nationalId">الرقم القومي</label>
+                        <input type="text" name="nationalId" class="form-control " ngModel required [readonly]="showMode">
+                    </div>
+                    <div class="form-group ">
+                        <label for="phoneNumber ">رقم التليفون</label>
+                        <input type="text" name="phoneNumber" class="form-control " ngModel required [readonly]="showMode">
+                    </div>
+                    <div class="form-group">
+                        <label for="address ">العنوان</label>
+                        <input type="text" name="address" class="form-control " ngModel required [readonly]="showMode">
+                    </div>
+                </div>
+            </div>
+            <div class="form__img u-margin-bottom-medium ">
+
+                <div class="form-group form__img--group">
+                    <label for="commercialImage">صورة السجل التجاري</label>
+                    <input type="file" name="commercialImage" (change)="onSelectCommercialImage($event)" class='u-margin-bottom-small' ngModel>
+                    <br>
+                    <img [src]="commercialRecordImageUrl" alt="" height="200" width="200" *ngIf='commercialRecordImageUrl.length>0'>
+                </div>
+                <div class="form-group form__img--group">
+                    <label for="taxCardImage">صورة البطاقة الضريبية</label>
+                    <input type="file" name="taxCardImage" (change)="onSelecttaxCardImage($event)" class='u-margin-bottom-small' ngModel>
+                    <br>
+                    <img [src]="taxCardImageUrl" alt="" height="200" width="200" *ngIf='taxCardImageUrl.length>0'>
+                </div>
+                <div class="form-group form__img--group">
+                    <label for="insuranceImage">صورة جواب التأمين</label>
+                    <input type="file" name="insuranceImage" (change)="onSelectinsuranceImage($event)" class='u-margin-bottom-small' ngModel>
+                    <br>
+                    <img [src]="insuranceImageUrl" alt="" height="200" width="200" *ngIf='insuranceImageUrl.length>0'>
+                </div>
+                <div class="form-group form__img--group">
+                    <label for="nationalImage">صورة الرقم القومي</label>
+                    <input type="file" name="nationalImage" (change)="onSelectNationaImage($event)" class='u-margin-bottom-small' ngModel>
+                    <br>
+                    <img [src]="nationalIDImageUrl" alt="" height="200" width="200" *ngIf='nationalIDImageUrl.length>0'>
+                </div>
+            </div>
+
+            <div class="form__btn">
+                <button class="btn btn-warning" (click)="onAddToOperation()"> العمليات المالية</button>
+                <button class="btn btn-primary" type="submit" [disabled]="">{{showMode?'جديد' : 'حفظ'}}</button>
+            </div>
+        </form>
+    </div>
 </div>
-<div class="alert alert-danger alert-dismissible fade show alertBox" role="alert" *ngIf="alertDanger">
-    {{errorMessage}}
-    <button (click)='closeAlertDanger()' class="close" data-dismiss="alert" aria-label="Close">&times;</button>
-</div>
-<form action="" class="form " #userform="ngForm" (ngSubmit)="onSubmit(userform)">
-
-    <div class=" form__info ">
-        <div class="form__left u-margin-bottom-medium ">
-            <div class="form-group ">
-                <label for="taxCardNumber ">رقم البطاقة الضريبية</label>
-                <input type="text" name="taxCardNumber" class="form-control " ngModel required [readonly]="showMode">
-            </div>
-            <div class="form-group ">
-                <label for="quotaValue">قيمة الحصه الإسترادية</label>
-                <input type="text" name="quotaValue" class="form-control " ngModel required [readonly]="showMode">
-            </div>
-            <div class="form-group ">
-                <label for="commericalRecord ">سجل العميل التجاري</label>
-                <input type="text " name="commericalRecord" class="form-control " ngModel required [readonly]="showMode">
-            </div>
-            <div class="form-group ">
-                <label for="addressOfCommericalRecord">عنوان السجل التجاري</label>
-                <input type="text" name="addressOfCommericalRecord" class="form-control" ngModel [readonly]="showMode">
-            </div>
-            <div class="form-group ">
-                <label for="insuranceNumber ">رقم التأمين</label>
-                <input type="text " name="insuranceNumber" class="form-control " ngModel required [readonly]="showMode">
-            </div>
-
-            <!-- <div class="form-group ">
-                <label for="productType">نوع البضاعه</label>
-                <select name="productType" class="form-control form__select" ngModel required>
-                    <option value="closes">Closes</option>
-                    <option vlaue="tech">Tech</option>
-                    <option value="cars">Cars</option>
-                </select>
-            </div> -->
-
-        </div>
-        <div class="form__right u-margin-bottom-medium ">
-            <div class="form-group ">
-                <label for="name">إسم العميل</label>
-                <input type="text" name="name" class="form-control " ngModel required [readonly]="showMode">
-            </div>
-            <div class="form-group ">
-                <label for="nationalId">الرقم القومي</label>
-                <input type="text" name="nationalId" class="form-control " ngModel required [readonly]="showMode">
-            </div>
-            <div class="form-group ">
-                <label for="phoneNumber ">رقم التليفون</label>
-                <input type="text" name="phoneNumber" class="form-control " ngModel required [readonly]="showMode">
-            </div>
-            <div class="form-group">
-                <label for="address ">العنوان</label>
-                <input type="text" name="address" class="form-control " ngModel required [readonly]="showMode">
-            </div>
-        </div>
-    </div>
-    <div class="form__img u-margin-bottom-medium ">
-
-        <div class="form-group form__img--group">
-            <label for="commercialImage">صورة السجل التجاري</label>
-            <input type="file" name="commercialImage" (change)="onSelectCommercialImage($event)" class='u-margin-bottom-small' ngModel>
-            <br>
-            <img [src]="commercialRecordImageUrl" alt="" height="200" width="200" *ngIf='commercialRecordImageUrl.length>0'>
-        </div>
-        <div class="form-group form__img--group">
-            <label for="taxCardImage">صورة البطاقة الضريبية</label>
-            <input type="file" name="taxCardImage" (change)="onSelecttaxCardImage($event)" class='u-margin-bottom-small' ngModel>
-            <br>
-            <img [src]="taxCardImageUrl" alt="" height="200" width="200" *ngIf='taxCardImageUrl.length>0'>
-        </div>
-        <div class="form-group form__img--group">
-            <label for="insuranceImage">صورة جواب التأمين</label>
-            <input type="file" name="insuranceImage" (change)="onSelectinsuranceImage($event)" class='u-margin-bottom-small' ngModel>
-            <br>
-            <img [src]="insuranceImageUrl" alt="" height="200" width="200" *ngIf='insuranceImageUrl.length>0'>
-        </div>
-        <div class="form-group form__img--group">
-            <label for="nationalImage">صورة الرقم القومي</label>
-            <input type="file" name="nationalImage" (change)="onSelectNationaImage($event)" class='u-margin-bottom-small' ngModel>
-            <br>
-            <img [src]="nationalIDImageUrl" alt="" height="200" width="200" *ngIf='nationalIDImageUrl.length>0'>
-        </div>
-    </div>
-
-    <div class="form__btn">
-        <button class="btn btn-warning" (click)="onAddToOperation()"> العمليات المالية</button>
-        <button class="btn btn-primary" type="submit" [disabled]="">{{showMode?'جديد' : 'حفظ'}}</button>
-    </div>
-</form>
