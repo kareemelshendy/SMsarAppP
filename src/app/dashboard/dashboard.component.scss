@@ -7,6 +7,18 @@
         top: 15%;
         left: 44%;
         transform: translate(-30%, -30%);
+        @media(max-width: 1000px) {
+            position: absolute;
+            top: 15%;
+            left: 42%;
+            transform: translate(-30%, -30%);
+        }
+        @media(max-width: 667px) {
+            position: absolute;
+            top: 15%;
+            left: 32%;
+            transform: translate(-30%, -30%);
+        }
     }
 }
 
