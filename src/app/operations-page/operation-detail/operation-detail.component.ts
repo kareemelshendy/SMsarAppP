@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { DataStorageService } from "src/app/shared/data-storage.service";
@@ -45,9 +45,20 @@ export class OperationDetailComponent implements OnInit {
   }
 
   private loadPage(page) {
+
+    // Get Token For  Authorization
+    const userData: {
+      name: string;
+      role: string;
+      __token: string;
+    } = JSON.parse(localStorage.getItem("userData"));
+    let reqHeader= new HttpHeaders({
+      'Content-Type':'application/json',
+      'Authorization': `Bearer ${userData.__token}`
+    })
     // get page of items from api
     this.__http
-      .get<any>(`https://clerk-new.herokuapp.com/transactions/?page=${page}&nationalId=${this.searchValue}`)
+      .get<any>(`https://clerk-new.herokuapp.com/transactions/?page=${page}&nationalId=${this.searchValue}`,{headers:reqHeader})
       .subscribe((x) => {
         this.pager = x;
         this.transactions = x.pageOfItems;
